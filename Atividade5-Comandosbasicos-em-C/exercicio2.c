@@ -14,30 +14,49 @@ Desafio: faça este programa utilizando uma estrutura de caso (switch-case)
     int main(){
         char nome[100];
         int idade;
-        printf("Digite seu nome");
+        int cat;
+        printf("Digite seu nome:");
         scanf("%99[^\n]",nome);
         printf("Qual é a idade de %s",nome);
         scanf("%i",&idade);
         if (idade<5)
         {
-            printf("Categoria invalida");
+            cat=1;
         }
         else if(idade>=5 && idade<=10)
         {
-            printf("%s participa da categoria Infantil",nome);
+           cat=2;
         }
         else if(idade>=11 && idade<=15)
         {
-            printf("%s participa da categoria Juvenil",nome);
+            cat=3;
         }
         else if(idade>=16 && idade<=20)
         {
-            printf("%s participa da categoria Junior",nome);
+            cat=4;
         }
         else
         {
+            cat=5;
+        }
+        switch (cat)
+        {
+        case 1:
+            printf("Categoria invalida");
+            break;
+        case 2:
+            printf("%s participa da categoria Infantil",nome);
+            break;
+        case 3:
+            printf("%s participa da categoria Juvenil",nome);
+        break;
+        case 4:
+            printf("%s participa da categoria Junior",nome);
+        break;
+        case 5:
             printf("%s participa da categoria Profissional",nome);
         }
-        
+        printf("Algo deu errado tente novamente");
+        return 0;
 
     }
