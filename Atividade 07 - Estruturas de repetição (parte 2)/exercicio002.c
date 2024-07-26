@@ -4,7 +4,7 @@
 int main(){
     int i=1000;
     printf("Numeros diviseveis por 11 no intervalo 1000 a 1999");
-    for(i=1000;i<1999;i++){
+    for(i=1000;i<=1999;i++){
         if (i%11==0){
             printf("%i ",i);
 
