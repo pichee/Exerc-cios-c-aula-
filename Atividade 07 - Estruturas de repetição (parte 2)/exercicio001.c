@@ -3,7 +3,7 @@
 int main(){
     int i=0,soma;
     printf("Numeros pares até 100:");
-    for(i=0;i<100;i++){
+    for(i=0;i<=100;i++){
         if (i%2==0){
             printf("%i ",i);
             soma+=i;
