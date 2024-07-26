@@ -11,7 +11,7 @@
                 maior=i;
             }
             if (i<menor){
-                maenor=i;
+                menor=i;
             }
             
             
