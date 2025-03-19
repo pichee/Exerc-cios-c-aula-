@@ -1,0 +1,129 @@
+/*
+Desenvolver programa em C que implemente uma função simples para escrever um texto na tela.
+*/
+#include <stdio.h>
+void funcao(char mensagem[],FILE *arquivo){
+    fprintf(arquivo,"Voce digitou:\n%s\n",mensagem);
+}
+int main(){
+        FILE *arquivo=fopen("exercicio1.txt","w");
+        if(arquivo==NULL){
+            printf("Algo deu errado");
+            return 1;
+        }
+        char texto[1000];
+        printf("Digite aqui o seu texto:\n");
+        scanf("%999[^\n]", texto);
+        funcao(texto,arquivo);
+        fclose(arquivo);
+        printf("O arquivo foi salvo em: ");
+        system("cd"); 
+        return 0;
+    }
+/*Escrever um programa em C que apresente uma função que recebe parâmetros e retora um valor a main.
+
+Por exemplo: ler 2 inteiros e passar para função que retorna a soma dos valores.*/
+#include <stdio.h>
+int soma(int n1,int n2){
+    return n1+n2;
+}
+    int main(){
+        int n1,n2,cal;
+        printf("Digite o primeiro valor:\n");
+        scanf("%i",&n1);
+        printf("Digite o segundo valor:\n");
+        scanf("%i",&n2);
+        cal=soma(n1,n2);
+        printf("%i",cal);
+    
+    }
+/*Escrever um programa que leia o arquivo dados.txt, escreva os valores na tela.
+
+Contar a quantidade de valores
+
+Identificar a quantidade de números pares, impares, positivos, negativos e zero.
+
+Contar a quantidade de vezes que cada inteiro está presente no arquivo.*/
+#include <stdio.h>
+int main(){
+    int valores=0,pares=0,impares=0,positivos=0,negativos=0,zeros=0;
+    FILE *arquivo=fopen("dados.txt","r");
+    if (arquivo==NULL)
+    {
+        printf("Algo deu errado");
+        return 0;
+    }
+    
+    while (fscanf(arquivo, "%i",&valores)==1)
+    {
+      
+        if (valores%2==0)
+        {
+            pares++;}
+        else{
+            impares++;
+        }
+
+        if (valores<0)
+        {
+            negativos++;
+        }
+        else{
+            positivos++;}
+
+        if (valores==0)
+        {
+            zeros++;
+        }
+    }
+    fclose(arquivo);
+    FILE *newfile=fopen("valores.txt","w");
+        fprintf(newfile,"Aqui estão os valores:\n");
+        fprintf(newfile,"Pares:%i\n",pares);
+        fprintf(newfile,"Impares:%i\n",impares);
+        fprintf(newfile,"Zeros%i\n",zeros);
+        fprintf(newfile,"Positivos%i\n",positivos);
+        fprintf(newfile,"Negativos%i\n",negativos);
+    fclose(newfile);
+    
+    
+}
+/*Escrever um programa em C que usando um loop infinito que solicita a escolha do usuário, dentro delas uma operação de leitura e outra operação de escrita em arquivo. 
+
+A partir da escolha de escrita, gravar uma string de tamanho 50  em um arquivo texto.
+
+A partir da escolha de leitura, apresentar na tela todas as linhas escrita até o momento.
+
+Outras opções podem ser implementadas livremente, como p.e. contar número e linhas, palavras, letras, espaços em branco.
+
+O programa deve encerrar quando o usuário digitar -1 para a opção de escolha. */
+#include <stdio.h>
+int main(){
+    FILE *principal;
+    char texto[50];
+    int tmp;
+    while (1)
+    {
+        printf("Digite o que voce quer:\n1-Escrever\n2-Leitura\nEscolha:");
+        scanf("%i",&tmp);
+        if (tmp==1)
+        {
+            principal=fopen("principal.txt","a");
+            getchar();
+            fgets(texto,50,stdin);
+            fprintf(principal,"%s",texto);
+            fclose(principal);
+        }else{
+            char textotmp[50];
+            principal=fopen("principal.txt","r");
+            while (fgets(textotmp,50,principal))
+            {
+                printf("%s",textotmp);
+            }
+            fclose(principal);
+            
+        }
+        
+    }
+    
+}
